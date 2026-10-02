@@ -1,0 +1,10 @@
+/build/
+/live/
+frontend/node_modules/
+appname
+*.db
+*.sqlite3
+geoip.mmdb
+config.ini
+make
+sender.php
