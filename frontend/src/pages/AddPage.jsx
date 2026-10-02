@@ -548,6 +548,7 @@ export default function AddPage() {
 		isValidPhone(phone) &&
 		!periodError &&
 		text.trim() !== "" &&
+		orderSummary[0] >= 2 && // обявление 2 слова и более
 		placeSelected &&
 		offerAccepted &&
 		!sending;
@@ -972,7 +973,7 @@ export default function AddPage() {
 							}}
 						>
 							<TextField
-								label="Текст объявления"
+								label="Текст объявления (от 2 слов)"
 								value={text}
 								onChange={
 									handleTextChange

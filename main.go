@@ -15,9 +15,9 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-const VERSION = "1.01"
+const VERSION = "1.02"
 const BUILD_DATE = "2026-10-02"
-const BUILD_TIME = "08:49:51"
+const BUILD_TIME = "22:22:48"
 
 type LiveViewer struct {
 	FirstSeen time.Time
