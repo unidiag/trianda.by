@@ -12,10 +12,35 @@ import {
 } from "@mui/material";
 
 import SendIcon from "@mui/icons-material/Send";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+
+import CloseIcon from "@mui/icons-material/Close";
 
 import { sendDataToServer } from "utils/functions";
 
 const MAX_MESSAGE = 1000;
+const FORM_STORAGE_KEY = "advert_form_data";
+
+const loadSavedPhone = () => {
+  try {
+    const value = localStorage.getItem(
+      FORM_STORAGE_KEY
+    );
+
+    if (!value) {
+      return "";
+    }
+
+    const data = JSON.parse(value);
+
+    return typeof data.phone === "string"
+      ? data.phone.trim()
+      : "";
+  } catch {
+    return "";
+  }
+};
 
 const isValidEmail = (value) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -42,7 +67,9 @@ const isValidContact = (value) => {
 };
 
 export default function ContactPage() {
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState(
+    () => loadSavedPhone()
+  );
   const [message, setMessage] = useState("");
 
   const [sending, setSending] = useState(false);
@@ -151,6 +178,22 @@ export default function ContactPage() {
           Обратная связь
         </Typography>
 
+
+        <Alert
+          severity="info"
+          sx={{
+            mb: 3,
+            fontSize: "0.75rem",
+            lineHeight: 1.45,
+          }}
+        >
+          Обращаем Ваше внимание, что в соответствии с законодательством
+          заключение и расторжение договора осуществляются только после
+          подтверждения личности (по документу), а не по телефону, электронной почте или через форму
+          обратной связи.
+        </Alert>
+
+
         <Stack spacing={2}>
           <TextField
             label="Телефон или email"
@@ -167,7 +210,25 @@ export default function ContactPage() {
                 : " "
             }
             inputProps={{
-                maxLength: 50,
+              maxLength: 50,
+            }}
+            InputProps={{
+              endAdornment: contact ? (
+                <InputAdornment position="end">
+                  <IconButton
+                    edge="end"
+                    size="small"
+                    onClick={() => {
+                      setContact("");
+                      setSuccess(false);
+                      setError("");
+                    }}
+                    aria-label="Очистить"
+                  >
+                    <CloseIcon fontSize="small" />
+                  </IconButton>
+                </InputAdornment>
+              ) : null,
             }}
             fullWidth
             disabled={sending}
