@@ -508,10 +508,8 @@ useEffect(() => {
                   ? personalHelper
                   : " "
               }
-              slotProps={{
-                htmlInput: {
+              inputProps={{
                   maxLength: 50,
-                },
               }}
             />
 
@@ -525,10 +523,8 @@ useEffect(() => {
               autoComplete="family-name"
               fullWidth
               disabled={loading}
-              slotProps={{
-                htmlInput: {
+              inputProps={{
                   maxLength: 100,
-                },
               }}
             />
 

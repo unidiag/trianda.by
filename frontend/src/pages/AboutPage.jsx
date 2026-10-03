@@ -150,11 +150,9 @@ export default function AboutPage() {
             <ListItem key={program}>
               <ListItemText
                 primary={program}
-                slotProps={{
-                  primary: {
-                    sx: {
-                      lineHeight: 1.6,
-                    },
+                primaryTypographyProps={{
+                  sx: {
+                    lineHeight: 1.6,
                   },
                 }}
               />

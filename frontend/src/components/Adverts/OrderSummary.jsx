@@ -211,11 +211,13 @@ export default function OrderSummary({
     onSummaryChange([
       wordsCount,
       pricePerWord,
+      discountPercent,
       totalPrice,
     ]);
   }, [
     wordsCount,
     pricePerWord,
+    discountPercent,
     totalPrice,
     onSummaryChange,
   ]);

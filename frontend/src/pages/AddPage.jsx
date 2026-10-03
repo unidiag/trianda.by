@@ -312,7 +312,7 @@ export default function AddPage() {
 		useState(false);
 
 	const [orderSummary, setOrderSummary] =
-		useState([0, 0, 0]);
+		useState([0, 0, 0, 0]);
 
 	const [
 		companyDetails,
@@ -486,7 +486,8 @@ export default function AddPage() {
 						.unix()
 						.toString(),
 
-					amount: orderSummary[2].toFixed(2),
+					amount: orderSummary[3].toFixed(2),
+					discount: orderSummary[2],
 
 					beznal: cashless ? 1 : 0,
 
@@ -656,10 +657,8 @@ export default function AddPage() {
 							}}
 							fullWidth
 							disabled={sending}
-							slotProps={{
-								htmlInput: {
-									maxLength: 250,
-								},
+							inputProps={{
+								maxLength: 250,
 							}}
 						/>
 
@@ -687,10 +686,8 @@ export default function AddPage() {
 									sending
 								}
 								placeholder="УНП, юридический адрес, расчётный счёт, банк, БИК и тп."
-								slotProps={{
-									htmlInput: {
-										maxLength: 1000,
-									},
+								inputProps={{
+									maxLength: 1000,
 								}}
 							/>
 						)}
@@ -731,10 +728,8 @@ export default function AddPage() {
 								disabled={
 									sending
 								}
-								slotProps={{
-									htmlInput: {
-										maxLength: 50,
-									},
+								inputProps={{
+									maxLength: 50,
 								}}
 							/>
 
@@ -1006,15 +1001,11 @@ export default function AddPage() {
 													: 2,
 										},
 								}}
-								slotProps={{
-									formHelperText:
-										{
-											sx: {
-												textAlign:
-													"right",
-												mx: 0,
-											},
-										},
+								FormHelperTextProps={{
+									sx: {
+										textAlign: "right",
+										mx: 0,
+									},
 								}}
 							/>
 

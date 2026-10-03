@@ -439,10 +439,8 @@ export default function BasePage() {
 					setDate(value > today ? today : value);
 				}}
 				fullWidth
-				slotProps={{
-					htmlInput: {
-					max: getToday(),
-					},
+				inputProps={{
+				max: getToday(),
 				}}
 				sx={(theme) => ({
 					"& input": {

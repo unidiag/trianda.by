@@ -166,10 +166,8 @@ export default function ContactPage() {
                 ? "Введите корректный телефон или email"
                 : " "
             }
-            slotProps={{
-              htmlInput: {
-                maxLength: 200,
-              },
+            inputProps={{
+                maxLength: 50,
             }}
             fullWidth
             disabled={sending}
@@ -184,13 +182,11 @@ export default function ContactPage() {
             fullWidth
             disabled={sending}
             helperText={`Осталось символов: ${remaining}`}
-            slotProps={{
-              formHelperText: {
+            FormHelperTextProps={{
                 sx: {
-                  textAlign: "right",
-                  mx: 0,
+                    textAlign: "right",
+                    mx: 0,
                 },
-              },
             }}
           />
 
