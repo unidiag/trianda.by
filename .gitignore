@@ -1,0 +1,13 @@
+/build/
+/live/
+/erip/
+frontend/node_modules/
+frontend/public/
+trianda.by
+*.db
+*.sqlite3
+geoip.mmdb
+config.ini
+make
+sender.php
+
